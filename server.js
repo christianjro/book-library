@@ -3,14 +3,16 @@
 // we don't want to load in our environment variable unless we are in our development environment 
 if (process.env.NODE_ENV !== 'production') {
     // loads all variables from our .env file and it's going to download it into our process.env variable in our application ... process.env.DATABASE_URL
-    require('dotenv').config()
+    require('dotenv').config({ path: '.env' })
 }
 
 const express = require('express')
 const app = express()
 const expressLayouts = require('express-ejs-layouts')
 
+// this is where all the routers go
 const indexRouter = require('./routes/index')
+const authorRouter = require('./routes/authors')
 
 app.set('view engine', 'ejs')
 app.set('views', __dirname + '/views')
@@ -23,10 +25,13 @@ app.use(express.static('public'))
 const mongoose = require('mongoose')
 const dbURL = process.env.DATABASE_URL
 // we need to install env so we have process.env.DATABASE_URL available
-mongoose.connect(dbURL, { useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect(dbURL, { useUnifiedTopology: true, useNewUrlParser: true})
 const db = mongoose.connection
 db.on('error', error => console.error(error))
 db.once('open', () => console.log("Connected to Mongoose"))
+
+// this is where all the routers are used
 app.use('/', indexRouter)
+app.use('/authors', authorRouter)
 
 app.listen(process.env.PORT || 3000)
