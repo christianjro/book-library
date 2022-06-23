@@ -7,7 +7,7 @@ const Author = require('../models/author')
 // when the url is /authors, it renders the authors/index file from the views folder
 router.get('/', async (req, res) => {
     let searchOptions = {}
-    if (req.query.name != null && req.query.name !== ' ' ) {
+    if (req.query.name != null && req.query.name !== '' ) {
         searchOptions.name = new RegExp(req.query.name, 'i')
     }
     try { 
