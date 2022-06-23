@@ -9,6 +9,8 @@ if (process.env.NODE_ENV !== 'production') {
 const express = require('express')
 const app = express()
 const expressLayouts = require('express-ejs-layouts')
+// install body parser to access input elements
+const bodyParser = require('body-parser')
 
 // this is where all the routers go
 const indexRouter = require('./routes/index')
@@ -19,6 +21,7 @@ app.set('views', __dirname + '/views')
 app.set('layout', 'layouts/layout')
 app.use(expressLayouts)
 app.use(express.static('public'))
+app.use(bodyParser.urlencoded({ limit: '10mb', extended: false }))
 
 // importing mongoose and connecting to the database
 // inside the connect() we're passing a string for the url which comes from our environment variables

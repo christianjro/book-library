@@ -1,1 +1,12 @@
-All Authors
+<h2>Search Authors</h2>
+<!-- action url points to the the authors index page -->
+<!-- authors index page refers to the file in the routes folder -->
+<form action="/authors" method="GET">
+    <label>Name</label>
+    <input type="text" name="name" value="<%= searchOptions.name %> ">
+    <button type="submit">Search</button>
+</form>
+<br>
+<% authors.forEach(author => { %> 
+    <div><% author.name %> </div>
+<% }) %> 
