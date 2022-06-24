@@ -3,7 +3,7 @@
 // we don't want to load in our environment variable unless we are in our development environment 
 if (process.env.NODE_ENV !== 'production') {
     // loads all variables from our .env file and it's going to download it into our process.env variable in our application ... process.env.DATABASE_URL
-    require('dotenv').config({ path: '.env' })
+    require('dotenv').config()
 }
 
 const express = require('express')
@@ -32,6 +32,8 @@ mongoose.connect(dbURL, { useUnifiedTopology: true, useNewUrlParser: true})
 const db = mongoose.connection
 db.on('error', error => console.error(error))
 db.once('open', () => console.log("Connected to Mongoose"))
+
+
 
 // this is where all the routers are used
 app.use('/', indexRouter)
