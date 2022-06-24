@@ -23,16 +23,22 @@ app.use(expressLayouts)
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ limit: '10mb', extended: false }))
 
-// importing mongoose and connecting to the database
-// inside the connect() we're passing a string for the url which comes from our environment variables
-const mongoose = require('mongoose')
-const dbURL = process.env.DATABASE_URL
-// we need to install env so we have process.env.DATABASE_URL available
-mongoose.connect(dbURL, { useUnifiedTopology: true, useNewUrlParser: true})
-const db = mongoose.connection
-db.on('error', error => console.error(error))
-db.once('open', () => console.log("Connected to Mongoose"))
+// // importing mongoose and connecting to the database
+// // inside the connect() we're passing a string for the url which comes from our environment variables
+// const mongoose = require('mongoose')
+// const dbURL = process.env.DATABASE_URL
+// // we need to install env so we have process.env.DATABASE_URL available
+// mongoose.connect(dbURL, { useUnifiedTopology: true, useNewUrlParser: true})
+// const db = mongoose.connection
+// db.on('error', error => console.error(error))
+// db.once('open', () => console.log("Connected to Mongoose"))
 
+const { MongoClient, ServerApiVersion } = require('mongodb')
+const uri = "mongodb+srv://user:Pyi4BXVxwFNsBUUfj@cluster0.mf1ur.mongodb.net/?retryWrites=true&w=majority"
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 })
+client.connect(err => {
+  const collection = client.db("test").collection("devices")
+})
 
 
 // this is where all the routers are used
