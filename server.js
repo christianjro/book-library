@@ -15,6 +15,7 @@ const bodyParser = require('body-parser')
 // this is where all the routers go
 const indexRouter = require('./routes/index')
 const authorRouter = require('./routes/authors')
+const booksRouter = require('./routes/books')
 
 app.set('view engine', 'ejs')
 app.set('views', __dirname + '/views')
@@ -33,9 +34,11 @@ mongoose.connect(process.env.DATABASE_URI, { useNewUrlParser: true, useUnifiedTo
     })
     .catch(err => console.log(err))
 
-    
+
 // this is where all the routers are used
 app.use('/', indexRouter)
 app.use('/authors', authorRouter)
+app.use('/books', booksRouter)
+
 
 app.listen(process.env.PORT || 3000)
