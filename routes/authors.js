@@ -26,9 +26,7 @@ router.get('/', async (req, res) => {
 // when the url is /authors/new, it renders the authors/new file from the views folder
 router.get('/new', (req, res) => {
     // the variables within the {} are being passed to the ejs file
-    res.render('authors/new', { 
-        author: new Author() 
-    })
+    res.render('authors/new', { author: new Author() })
 })
 
 // Creating a New Author Route

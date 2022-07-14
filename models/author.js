@@ -7,5 +7,5 @@ const authorSchema = new mongoose.Schema({
     }
 })
 
-// this is the name of the table within the database
+// this is the schema for the database
 module.exports = mongoose.model('Author', authorSchema)
