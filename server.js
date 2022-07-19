@@ -11,6 +11,7 @@ const app = express()
 const expressLayouts = require('express-ejs-layouts')
 // install body parser to access input elements
 const bodyParser = require('body-parser')
+const methodOverride = require('method-override')
 
 // this is where all the routers go
 const indexRouter = require('./routes/index')
@@ -21,6 +22,7 @@ app.set('view engine', 'ejs')
 app.set('views', __dirname + '/views')
 app.set('layout', 'layouts/layout')
 app.use(expressLayouts)
+app.use(methodOverride('_method'))
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ limit: '10mb', extended: false }))
 

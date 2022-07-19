@@ -1,0 +1,8 @@
+<h2>Edit Author</h2> 
+<!-- action is the url the form goes to -->
+<form action="/authors/<%= author.id %>?_method=PUT" method="POST">
+    <!-- the inputs are written in a partial file so that the edit can also access it -->
+    <%- include('_form_fields') %>
+    <a href="/authors/<%= author.id %>">Cancel</a>
+    <button type="submit">Update</button>
+</form>
