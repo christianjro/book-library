@@ -2,9 +2,15 @@
 <!-- action url points to the the authors index page -->
 <!-- authors index page refers to the file in the routes folder -->
 <form action="/authors" method="GET">
-    <label>Name</label>
-    <input type="text" name="name" value="<%=searchOptions.name%>">
-    <button type="submit">Search</button>
+    <div class="form-row">
+        <div class="form-item">
+            <label>Name</label>
+            <input type="text" name="name" value="<%=searchOptions.name%>">
+        </div>
+    </div>
+    <div class="form-row form-row-end">
+        <button class="btn btn-primary" type="submit">Search</button>
+    </div>
 </form>
 <br>
 <% authors.forEach(author => { %> 

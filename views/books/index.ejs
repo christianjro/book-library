@@ -2,20 +2,25 @@
 <!-- action url points to the the authors index page -->
 <!-- authors index page refers to the file in the routes folder -->
 <form action="/books" method="GET">
-    <div>
-        <label>Title</label>
-        <input type="text" name="title" value="<%=searchOptions.title%>">
+    <div class="form-row">
+        <div class="form-item">
+            <label>Title</label>
+            <input type="text" name="title" value="<%=searchOptions.title%>">
+        </div>
     </div>
-    <div>
-        <label>Published After</label>
-        <input type="date" name="publishedAfter" value="<%=searchOptions.publishedAfter%>">
+    <div class="form-row">
+        <div class="form-item">
+            <label>Published After</label>
+            <input type="date" name="publishedAfter" value="<%=searchOptions.publishedAfter%>">
+        </div>
+        <div class="form-item">
+            <label>Published Before</label>
+            <input type="date" name="publishedBefore" value="<%=searchOptions.publishedBefore%>">
+        </div>
     </div>
-    <div>
-        <label>Published Before</label>
-        <input type="date" name="publishedBefore" value="<%=searchOptions.publishedBefore%>">
+    <div class="form-row form-row-end">
+        <button class="btn btn-primary" type="submit">Search</button>
     </div>
-    
-    <button type="submit">Search</button>
 </form>
 <br>
 <div>
